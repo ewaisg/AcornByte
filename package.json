@@ -1,0 +1,11 @@
+{
+  "name": "acornbyte-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AcornByte's static business website. No installation or build required.",
+  "scripts": {
+    "dev": "node preview.mjs",
+    "start": "node preview.mjs",
+    "check": "node --check app.js"
+  }
+}
