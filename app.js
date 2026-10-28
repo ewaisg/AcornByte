@@ -157,3 +157,6 @@ $('#copy-brief').addEventListener('click', async () => {
   try { if (!navigator.clipboard) throw new Error('Clipboard unavailable'); await navigator.clipboard.writeText(text); $('#brief-status').textContent = 'Inquiry copied. Paste it into an email to ewaisg@acornbyte.com and send when you’re ready.'; }
   catch { $('#brief-fallback').hidden = false; $('#brief-output').value = text; $('#brief-output').focus(); $('#brief-output').select(); $('#brief-status').textContent = 'Automatic copying is unavailable. Copy the selected inquiry below, then email it to ewaisg@acornbyte.com.'; }
 });
+
+// Deep-link the secondary service track without hiding the business offering.
+$$('[data-local-help]').forEach(link => link.addEventListener('click', () => $('#tech-tab').click()));

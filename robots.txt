@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://acornbyte.com/sitemap.xml
+Sitemap: https://www.acornbyte.com/sitemap.xml
