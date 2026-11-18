@@ -1,7 +1,7 @@
 /* Signature identity and portfolio. New geometric wordmark is the master. */
 .brand { letter-spacing: 0; }
-.signature-logo { width: 198px; height: auto; }
-.site-footer .signature-logo { width: 172px; }
+.signature-logo { width: 188px; height: auto; }
+.site-footer .signature-logo { width: 164px; }
 .hero { grid-template-columns: 1.04fr 1fr; gap: 65px; min-height: 750px; padding-block: 70px 68px; }
 .hero h1 { font-size: clamp(58px, 5.65vw, 84px); line-height: 1.06; letter-spacing: -.06em; }
 .hero h1 em { font-size: 1.1em; }

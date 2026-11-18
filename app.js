@@ -5,6 +5,23 @@ const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 $('#year').textContent = new Date().getFullYear();
 
+const themeMeta = $('meta[name="theme-color"]');
+const themeToggle = $('#theme-toggle');
+function currentTheme() {
+  return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+}
+function applyTheme(theme) {
+  const next = theme === 'light' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('acornbyte-theme', next);
+  if (themeMeta) themeMeta.setAttribute('content', next === 'light' ? '#f3efe6' : '#131c2d');
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-label', next === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+  }
+}
+applyTheme(currentTheme());
+themeToggle?.addEventListener('click', () => applyTheme(currentTheme() === 'dark' ? 'light' : 'dark'));
+
 // Navigation and tabs remain keyboard accessible.
 const menu = $('.menu-toggle');
 const nav = $('#main-nav');
