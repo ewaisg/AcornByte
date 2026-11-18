@@ -16,7 +16,7 @@ Static business website for AcornByte, LLC. Run `npm run dev` and open the print
 
 The inquiry builder prepares an email draft or copies text. It does not send messages or store submissions. The visitor reviews and sends the email in their own app. The page explains this and provides a selectable-text fallback if clipboard access is unavailable.
 
-Contact: Gheiath Ewais, `ewaisg@acornbyte.com`, `983.333.2222`. Phone and Teams consultations; in-person help around Erie and Denver by arrangement. No walk-in office.
+Contact: `ewaisg@acornbyte.com`, `983.333.2222`. Phone and Teams consultations. No walk-in office.
 
 ## Deployment
 

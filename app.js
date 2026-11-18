@@ -140,23 +140,48 @@ $$('[data-close-dialog]').forEach(button => button.addEventListener('click', () 
   dialog.addEventListener('close', () => { document.body.classList.remove('dialog-open'); lastDialogTrigger?.focus(); });
   dialog.addEventListener('click', e => { if (e.target === dialog) { const bounds = dialog.getBoundingClientRect(); if (e.clientX < bounds.left || e.clientX > bounds.right || e.clientY < bounds.top || e.clientY > bounds.bottom) dialog.close(); } });
 });
-function inquiryText() {
-  const form = $('#brief-form'); const data = new FormData(form);
-  return `Hello Gheiath,\n\nI’m interested in: ${data.get('topic')}\n${data.get('name').trim() ? `Name: ${data.get('name').trim()}\n` : ''}Preferred way to talk: ${data.get('mode')}\n\nHere’s what I have in mind:\n${data.get('message').trim()}\n\nSent from the AcornByte website inquiry builder.`;
+function buildInquiryText(form) {
+  const data = new FormData(form);
+  return `Hello AcornByte,\n\nI’m interested in: ${data.get('topic')}\n${data.get('name').trim() ? `Name: ${data.get('name').trim()}\n` : ''}Preferred way to talk: ${data.get('mode')}\n\nHere’s what I have in mind:\n${data.get('message').trim()}\n\nSent from the AcornByte website inquiry builder.`;
+}
+function openMailto(subject, body) {
+  const url = `mailto:ewaisg@acornbyte.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const link = document.createElement('a'); link.href = url; link.click();
+}
+async function copyInquiry(text, statusEl, fallbackEl, outputEl) {
+  try {
+    if (!navigator.clipboard) throw new Error('Clipboard unavailable');
+    await navigator.clipboard.writeText(text);
+    statusEl.textContent = 'Message copied. Paste it into an email to ewaisg@acornbyte.com and send when you’re ready.';
+  } catch {
+    fallbackEl.hidden = false;
+    outputEl.value = text;
+    outputEl.focus();
+    outputEl.select();
+    statusEl.textContent = 'Automatic copying is unavailable. Copy the selected message below, then email it to ewaisg@acornbyte.com.';
+  }
 }
 $('#brief-form').addEventListener('submit', e => {
   e.preventDefault(); if (!e.currentTarget.reportValidity()) return;
-  const subject = `AcornByte inquiry: ${$('#inquiry-topic').value}`;
-  const url = `mailto:ewaisg@acornbyte.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(inquiryText())}`;
+  openMailto(`AcornByte inquiry: ${$('#inquiry-topic').value}`, buildInquiryText(e.currentTarget));
   $('#brief-status').textContent = 'Your email app has been requested. Review and send the draft there. If it doesn’t open, use “Copy inquiry” and email ewaisg@acornbyte.com. Nothing has been sent by this site.';
-  const link = document.createElement('a'); link.href = url; link.click();
 });
 $('#copy-brief').addEventListener('click', async () => {
   if (!$('#brief-form').reportValidity()) return;
-  const text = inquiryText();
-  try { if (!navigator.clipboard) throw new Error('Clipboard unavailable'); await navigator.clipboard.writeText(text); $('#brief-status').textContent = 'Inquiry copied. Paste it into an email to ewaisg@acornbyte.com and send when you’re ready.'; }
-  catch { $('#brief-fallback').hidden = false; $('#brief-output').value = text; $('#brief-output').focus(); $('#brief-output').select(); $('#brief-status').textContent = 'Automatic copying is unavailable. Copy the selected inquiry below, then email it to ewaisg@acornbyte.com.'; }
+  await copyInquiry(buildInquiryText($('#brief-form')), $('#brief-status'), $('#brief-fallback'), $('#brief-output'));
 });
+const contactForm = $('#contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', e => {
+    e.preventDefault(); if (!e.currentTarget.reportValidity()) return;
+    openMailto(`AcornByte inquiry: ${$('#contact-topic').value}`, buildInquiryText(e.currentTarget));
+    $('#contact-status').textContent = 'Your email app has been requested. Review and send the draft there. If it doesn’t open, use “Copy message” and email ewaisg@acornbyte.com. Nothing has been sent by this site.';
+  });
+  $('#copy-contact').addEventListener('click', async () => {
+    if (!contactForm.reportValidity()) return;
+    await copyInquiry(buildInquiryText(contactForm), $('#contact-status'), $('#contact-fallback'), $('#contact-output'));
+  });
+}
 
 // Deep-link the secondary service track without hiding the business offering.
 $$('[data-local-help]').forEach(link => link.addEventListener('click', () => $('#tech-tab').click()));
