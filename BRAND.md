@@ -1,11 +1,33 @@
-# AcornByte signature identity
+# AcornByte identity
 
-Chosen source: acornByte.svg (the green uppercase wordmark). The supplied letter shapes are preserved; empty canvas and invisible text were removed for reliable placement.
+## Wordmark
 
-Use the green wordmark on white or ivory. Use the light wordmark on forest or other dark backgrounds. Use black for single-color printing. The icon is the opening A taken from the same lettering; use it for favicons and compact avatars, not as a replacement for the full name in first introductions.
+The wordmark is the owner's thin geometric lettering with an acorn in place of the "o". The acorn body is the lower half of the original "o" (same curve, width and stroke weight), with a gold monoline cap and stem that stay within the letter widths and below the ascender height of "b" and "t". The gold diagonals on the "A" and "y" are part of the lettering.
 
-Colors: wordmark forest #185B42, deep forest #173E31, ivory #F6F5ED, lime accent #D4EC89. Website fonts: Manrope and Instrument Serif italic. The wordmark is outlined SVG and needs no font installation.
+| File | Use |
+| --- | --- |
+| `assets/brand/acornbyte-wordmark-on-dark.svg` | Navy or other dark backgrounds. Off-white letters, gold gradient accents. |
+| `assets/brand/acornbyte-wordmark-on-light.svg` | Cream, white or other light backgrounds. Navy letters, solid gold accents (the bright gradient end is too pale on light backgrounds). |
+| `assets/brand/acornbyte-acorn-on-dark.svg` / `-on-light.svg` | Acorn mark alone, for avatars and compact placements. |
+| `assets/favicon.svg`, `assets/apple-touch-icon.png` | Acorn on the navy tile. Strokes are slightly heavier so it holds up at 16-32 px. |
 
-Minimum recommended wordmark width: 180 px digitally, 40 mm in print. Keep clear space at least half the capital-letter height. Preserve proportions; do not stretch, add shadows, recolor individual letters, or alternate among the other logo options. Use the full wordmark where the thin strokes remain clear. For tiny uses, use the A icon on a solid background.
+SVG is the master format. Minimum wordmark width 180 px on screen. Keep clear space of at least half the letter height. Do not stretch, add shadows, or recolor individual letters.
 
-SVG is the master format. Transparent PNG exports are included for everyday documents and social use. Original source retained as original-acornByte.svg.
+## Colors
+
+| Token | Hex | Notes |
+| --- | --- | --- |
+| Navy | `#131C2D` | Dark background, light-theme text |
+| Off-white | `#D8D4C8` | Dark-theme text, wordmark letters on dark |
+| Cream | `#F3EFE6` | Light background |
+| Gold | `#BC7C14` | Buttons, fills, accents |
+| Logo gold | `#D1902A` to `#FFD740` | Wordmark gradient on dark |
+| Gold text (light theme) | `#80550D`, large headline words `#9A6510` | Darker so gold text passes contrast on cream |
+
+## Themes
+
+Dark is the default; visitors can switch to light. The workbench, contact, About panel and hero card are navy bands in both themes and always use the dark token set; the light cards inside them (workbench window, contact form, hero window) switch back to light tokens in the light theme. See the top of `theme.css`.
+
+Fonts: Manrope and Instrument Serif italic, self-hosted in `assets/fonts/`. The wordmark is outlined SVG and needs no font.
+
+Earlier logo files (`acornbyte-logo-*.png`, `acornbyte-wordmark-green/light/black.svg`, `acornbyte-icon.svg`) are no longer referenced by the site and are kept for reference only.

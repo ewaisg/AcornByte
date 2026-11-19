@@ -1,6 +1,13 @@
-/* Style 1 brand system: navy, cream, gold. Dark is default. */
+/* Style 1 brand system: navy, cream, gold. Dark is default.
+   Navy bands (workbench, contact, about panel, hero art) stay navy in both
+   themes, so they always use the dark token set. Light cards placed inside
+   those bands (workbench window, contact form, hero window) switch back to
+   the light token set when the light theme is active. */
 :root,
-[data-theme="dark"] {
+[data-theme="dark"],
+[data-theme="light"] :is(.demo-section, .contact-section, .about-panel, .workspace-art, .document-note) {
+  --gold-text: #d1902a;
+  --gold-display: #d1902a;
   --paper: #131c2d;
   --ink: #d8d4c8;
   --forest: #0d1420;
@@ -22,7 +29,10 @@
   color-scheme: dark;
 }
 
-[data-theme="light"] {
+[data-theme="light"],
+[data-theme="light"] :is(.demo-section, .contact-section, .workspace-art) :is(.demo-window, .contact-form, .workspace-window) {
+  --gold-text: #80550d;
+  --gold-display: #9a6510;
   --paper: #f3efe6;
   --ink: #131c2d;
   --forest: #131c2d;
@@ -145,17 +155,17 @@ textarea:focus-visible,
 [data-theme="light"] .theme-toggle .icon-sun { display: block; }
 [data-theme="light"] .theme-toggle .icon-moon { display: none; }
 
-.eyebrow.light { color: var(--gold); }
+.eyebrow.light { color: var(--gold-text); }
 
 .hero h1 em,
 .section-head h2 em,
 .about-copy h2 em,
 .faq-heading h2 em,
 .dialog-body h2 em {
-  color: var(--gold);
+  color: var(--gold-display);
 }
 
-.strip-acorn { color: var(--gold); }
+.strip-acorn { color: var(--gold-text); }
 
 .service-tabs { border-bottom-color: var(--line); }
 
@@ -179,7 +189,7 @@ textarea:focus-visible,
   color: var(--ink);
 }
 
-.demo-copy h2 em { color: var(--gold); }
+.demo-copy h2 em { color: var(--gold-display); }
 
 .demo-copy > p:not(.eyebrow) { color: var(--demo-muted); }
 
@@ -188,7 +198,7 @@ textarea:focus-visible,
   color: var(--demo-muted);
 }
 
-.demo-tab.active { color: var(--gold); }
+.demo-tab.active { color: var(--gold-text); }
 
 .demo-tab:hover { color: var(--ink); }
 
@@ -268,8 +278,8 @@ textarea:focus-visible,
 }
 
 .contact-inner h2 { color: var(--ink); }
-.contact-inner h2 em { color: var(--gold); }
-.contact-inner .eyebrow { color: var(--gold); }
+.contact-inner h2 em { color: var(--gold-display); }
+.contact-inner .eyebrow { color: var(--gold-text); }
 .contact-inner > div > p:not(.eyebrow) { color: var(--soft); }
 
 .contact-details > a {
@@ -278,7 +288,7 @@ textarea:focus-visible,
 }
 
 .contact-details > a > span { color: var(--soft); }
-.contact-details > a .icon { color: var(--gold); }
+.contact-details > a .icon { color: var(--gold-text); }
 .contact-details > p { color: var(--soft); }
 
 .contact-form {
@@ -287,7 +297,7 @@ textarea:focus-visible,
   color: var(--ink);
 }
 
-.contact-form .eyebrow { color: var(--gold); }
+.contact-form .eyebrow { color: var(--gold-text); }
 .contact-form-intro { color: var(--soft); }
 .contact-form label { color: var(--ink); }
 .contact-form label span { color: var(--muted); }
@@ -303,7 +313,7 @@ textarea:focus-visible,
 .contact-form .form-hint,
 .contact-form .form-status { color: var(--soft); }
 
-.contact-form .text-button { color: var(--gold); }
+.contact-form .text-button { color: var(--gold-text); }
 
 .contact-form .button-dark {
   background: var(--gold);
@@ -386,7 +396,7 @@ dialog::backdrop {
 }
 
 .workspace-connect span { border-color: color-mix(in srgb, var(--gold) 35%, transparent); }
-.workspace-connect b { color: var(--gold); }
+.workspace-connect b { color: var(--gold-text); }
 .workspace-caption { color: var(--soft); }
 
 .business-grid .service-item:nth-child(n+3) { border-top-color: var(--line); }
@@ -433,7 +443,7 @@ dialog::backdrop {
 
 .review-stamp {
   border-color: var(--gold);
-  color: var(--gold);
+  color: var(--gold-text);
 }
 
 .document-note {
@@ -442,7 +452,7 @@ dialog::backdrop {
   box-shadow: 0 7px 14px var(--shadow);
 }
 
-.document-note span { color: var(--gold); }
+.document-note span { color: var(--gold-text); }
 
 .ai-visual { background: color-mix(in srgb, var(--ink) 7%, var(--surface)); }
 
@@ -498,4 +508,18 @@ dialog::backdrop {
   .header-actions {
     margin-left: 0;
   }
+}
+
+/* Readability fixes */
+/* Hero art text uses the panel's own ink (was --paper, which is navy on navy). */
+.workspace-art { color: var(--ink); }
+.workspace-connect span {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--ink) 30%, transparent);
+}
+
+/* Service tab numbers were faded to 60% and fell below contrast. */
+.service-tab > span {
+  opacity: 1;
+  color: var(--muted);
 }
