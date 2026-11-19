@@ -9,6 +9,7 @@ Static business website for AcornByte, LLC. Run `npm run dev` and open the print
 - Three anonymous portfolio examples describe actual development categories. Interface graphics use fictional data; the page does not claim paid client engagements, measured outcomes, or publicly released products.
 - The logo is One Bit: an acorn whose stem is a single pixel, with a lowercase Manrope wordmark. On-dark and on-light SVG masters, stacked and one-color versions, the mark and the favicon are in `assets/`. See `BRAND.md`.
 - Self-hosted Manrope and Instrument Serif fonts; license files are in `assets/fonts/`.
+- Interactive scenes (`assets/scenes.js`): the hero shows one of five canvas scenes (Flow, Terrain, Byte Field, Constellation, Orbit), a different one each visit; visitors can pick one (remembered in their browser) or pause motion. The About panel shows Seed, particles that form the acorn. Scenes pause off-screen and in background tabs, follow the theme, and render a still frame for reduced-motion users.
 - Interactive fictional tracker, workflow simulation and home-office checklist. Changes live only in the browser tab and reset on reload.
 - Accessible service tabs, mobile navigation, native dialogs, FAQ disclosures, keyboard support and reduced-motion styles.
 
