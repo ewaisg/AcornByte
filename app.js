@@ -141,14 +141,14 @@ wireTabs($$('.demo-tab'), button => {
 });
 renderTracker();
 
-// This is a draft builder, not a server-side submission form.
+// Inquiry forms: posted to /api/contact, which emails AcornByte via Resend.
 const brief = $('#brief-dialog');
 const privacy = $('#privacy-dialog');
 let lastDialogTrigger;
 function openDialog(dialog, trigger) { lastDialogTrigger = trigger; dialog.showModal(); document.body.classList.add('dialog-open'); }
 $$('[data-open-brief]').forEach(trigger => trigger.addEventListener('click', () => {
   if (trigger.dataset.topic) $('#inquiry-topic').value = trigger.dataset.topic;
-  $('#brief-status').textContent = ''; $('#brief-fallback').hidden = true;
+  $('#brief-status').textContent = '';
   openDialog(brief, trigger);
 }));
 $('#privacy-open').addEventListener('click', e => openDialog(privacy, e.currentTarget));
@@ -157,48 +157,53 @@ $$('[data-close-dialog]').forEach(button => button.addEventListener('click', () 
   dialog.addEventListener('close', () => { document.body.classList.remove('dialog-open'); lastDialogTrigger?.focus(); });
   dialog.addEventListener('click', e => { if (e.target === dialog) { const bounds = dialog.getBoundingClientRect(); if (e.clientX < bounds.left || e.clientX > bounds.right || e.clientY < bounds.top || e.clientY > bounds.bottom) dialog.close(); } });
 });
-function buildInquiryText(form) {
-  const data = new FormData(form);
-  return `Hello AcornByte,\n\nI’m interested in: ${data.get('topic')}\n${data.get('name').trim() ? `Name: ${data.get('name').trim()}\n` : ''}Preferred way to talk: ${data.get('mode')}\n\nHere’s what I have in mind:\n${data.get('message').trim()}\n\nSent from the AcornByte website inquiry builder.`;
-}
-function openMailto(subject, body) {
-  const url = `mailto:ewaisg@acornbyte.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  const link = document.createElement('a'); link.href = url; link.click();
-}
-async function copyInquiry(text, statusEl, fallbackEl, outputEl) {
-  try {
-    if (!navigator.clipboard) throw new Error('Clipboard unavailable');
-    await navigator.clipboard.writeText(text);
-    statusEl.textContent = 'Message copied. Paste it into an email to ewaisg@acornbyte.com and send when you’re ready.';
-  } catch {
-    fallbackEl.hidden = false;
-    outputEl.value = text;
-    outputEl.focus();
-    outputEl.select();
-    statusEl.textContent = 'Automatic copying is unavailable. Copy the selected message below, then email it to ewaisg@acornbyte.com.';
-  }
-}
-$('#brief-form').addEventListener('submit', e => {
-  e.preventDefault(); if (!e.currentTarget.reportValidity()) return;
-  openMailto(`AcornByte inquiry: ${$('#inquiry-topic').value}`, buildInquiryText(e.currentTarget));
-  $('#brief-status').textContent = 'Your email app has been requested. Review and send the draft there. If it doesn’t open, use “Copy inquiry” and email ewaisg@acornbyte.com. Nothing has been sent by this site.';
-});
-$('#copy-brief').addEventListener('click', async () => {
-  if (!$('#brief-form').reportValidity()) return;
-  await copyInquiry(buildInquiryText($('#brief-form')), $('#brief-status'), $('#brief-fallback'), $('#brief-output'));
-});
-const contactForm = $('#contact-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', e => {
-    e.preventDefault(); if (!e.currentTarget.reportValidity()) return;
-    openMailto(`AcornByte inquiry: ${$('#contact-topic').value}`, buildInquiryText(e.currentTarget));
-    $('#contact-status').textContent = 'Your email app has been requested. Review and send the draft there. If it doesn’t open, use “Copy message” and email ewaisg@acornbyte.com. Nothing has been sent by this site.';
+
+// Wire one inquiry form: validation, phone requirement, sending state and result.
+function wireInquiryForm(form, statusEl, source) {
+  if (!form) return;
+  const openedAt = Date.now();
+  const button = form.querySelector('button[type="submit"]');
+  const label = button.firstChild.textContent;
+  const phone = form.querySelector('[name="phone"]');
+  const mode = form.querySelector('[name="mode"]');
+  // A phone number is required only when the visitor asks for a call.
+  const syncPhone = () => { phone.required = mode.value === 'Phone'; };
+  mode.addEventListener('change', syncPhone);
+  syncPhone();
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    const data = Object.fromEntries(new FormData(form));
+    data.elapsed = Date.now() - openedAt;
+    data.source = source;
+    button.disabled = true;
+    button.firstChild.textContent = 'Sending… ';
+    statusEl.classList.remove('is-error', 'is-success');
+    statusEl.textContent = 'Sending your message…';
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || !out.ok) throw new Error(out.error || 'Your message could not be sent right now. Please try again in a few minutes.');
+      form.reset();
+      syncPhone();
+      statusEl.classList.add('is-success');
+      statusEl.textContent = 'Thank you. Your message has been sent, and we’ll reply by email soon.';
+    } catch (err) {
+      statusEl.classList.add('is-error');
+      statusEl.textContent = err.message || 'Your message could not be sent right now. Please try again in a few minutes.';
+    } finally {
+      button.disabled = false;
+      button.firstChild.textContent = label;
+    }
   });
-  $('#copy-contact').addEventListener('click', async () => {
-    if (!contactForm.reportValidity()) return;
-    await copyInquiry(buildInquiryText(contactForm), $('#contact-status'), $('#contact-fallback'), $('#contact-output'));
-  });
 }
+wireInquiryForm($('#brief-form'), $('#brief-status'), 'brief');
+wireInquiryForm($('#contact-form'), $('#contact-status'), 'contact');
 
 // Deep-link the secondary service track without hiding the business offering.
 $$('[data-local-help]').forEach(link => link.addEventListener('click', () => $('#tech-tab').click()));

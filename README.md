@@ -14,7 +14,13 @@ Static business website for AcornByte, LLC. Run `npm run dev` and open the print
 
 ## Inquiries
 
-The inquiry builder prepares an email draft or copies text. It does not send messages or store submissions. The visitor reviews and sends the email in their own app. The page explains this and provides a selectable-text fallback if clipboard access is unavailable.
+The contact form and the project-brief dialog post to `api/contact.js`, a Vercel serverless function that emails each inquiry to AcornByte through [Resend](https://resend.com). Nothing is stored. The email's reply-to is the visitor's address.
+
+Required Vercel environment variable: `RESEND_API_KEY` (a Resend key with sending access; acornbyte.com must be verified in Resend). Optional: `CONTACT_TO` (default `ewaisg@acornbyte.com`) and `CONTACT_FROM` (default `AcornByte Website <website@acornbyte.com>`). Without the key, the form shows "temporarily unavailable".
+
+Spam protection: hidden honeypot field, minimum fill time, same-origin check, per-IP rate limit and server-side validation. `npm run dev` serves the static site only; the form needs a Vercel deployment (or `vercel dev`) to send.
+
+The site lists a mailing address (2525 Arapahoe Ave, Ste E4 #1380, Boulder, CO 80302) instead of an email address or phone number.
 
 Contact: `ewaisg@acornbyte.com`, `983.333.2222`. Phone and Teams consultations. No walk-in office.
 
