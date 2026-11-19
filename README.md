@@ -7,7 +7,7 @@ Static business website for AcornByte, LLC. Run `npm run dev` and open the print
 - Business services lead: custom business apps and dashboards, document and approval workflows, practical AI integrations, websites and mobile tools.
 - Local technology help is a separate service tab; the homepage local-help link opens that track.
 - Three anonymous portfolio examples describe actual development categories. Interface graphics use fictional data; the page does not claim paid client engagements, measured outcomes, or publicly released products.
-- The wordmark is the owner's lettering with an acorn replacing the "o". On-dark and on-light SVG masters, the acorn mark and the favicon are in `assets/`. See `BRAND.md`.
+- The logo is One Bit: an acorn whose stem is a single pixel, with a lowercase Manrope wordmark. On-dark and on-light SVG masters, stacked and one-color versions, the mark and the favicon are in `assets/`. See `BRAND.md`.
 - Self-hosted Manrope and Instrument Serif fonts; license files are in `assets/fonts/`.
 - Interactive fictional tracker, workflow simulation and home-office checklist. Changes live only in the browser tab and reset on reload.
 - Accessible service tabs, mobile navigation, native dialogs, FAQ disclosures, keyboard support and reduced-motion styles.
