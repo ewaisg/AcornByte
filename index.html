@@ -1,144 +1,724 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#131c2d">
-  <script>
-    (() => {
-      const saved = localStorage.getItem('acornbyte-theme');
-      const theme = saved === 'light' || saved === 'dark' ? saved : 'dark';
-      document.documentElement.setAttribute('data-theme', theme);
-    })();
-  </script>
-  <title>AcornByte | Custom Business Software, Workflows & Practical AI</title>
-  <meta name="description" content="Custom business apps, project dashboards, document workflows and practical AI integrations. Remote service and local technology help around Erie and Denver.">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="AcornByte — Better tools for the work you actually do.">
-  <meta property="og:description" content="Custom business software, document workflows and practical AI for the work you actually do.">
-  <meta property="og:url" content="https://www.acornbyte.com/">
-  <meta property="og:image" content="https://www.acornbyte.com/assets/social-preview.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://www.acornbyte.com/">
-  <link rel="icon" href="assets/favicon.ico" sizes="any">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="preload" href="assets/fonts/manrope-400.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="brand.css">
-  <link rel="stylesheet" href="theme.css">
-  <script src="app.js" defer></script>
-  <script src="assets/scenes.js" defer></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"AcornByte, LLC","url":"https://www.acornbyte.com/","email":"ewaisg@acornbyte.com","address":{"@type":"PostalAddress","streetAddress":"1378 Sienna Peak Cir","addressLocality":"Erie","addressRegion":"CO","postalCode":"80516","addressCountry":"US"},"description":"Custom business software, project dashboards, document workflows, AI integrations, websites and local technology help."}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AcornByte | AI & ML Technology for Business</title>
+<meta name="description" content="AcornByte delivers AI and ML solutions to streamline business processes across any industry. Our platform products and custom technology help companies of all sizes automate workflows, extract insights, and scale efficiently.">
+<meta name="theme-color" content="#131c2d">
+<link rel="canonical" href="https://www.acornbyte.com/">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AcornByte">
+<meta property="og:title" content="AcornByte | AI & ML Technology for Business">
+<meta property="og:description" content="AI and ML solutions to streamline business processes across any industry.">
+<meta property="og:url" content="https://www.acornbyte.com/">
+<meta property="og:image" content="https://www.acornbyte.com/assets/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AcornByte | AI & ML Technology for Business">
+<meta name="twitter:description" content="AI and ML solutions to streamline business processes across any industry.">
+<meta name="twitter:image" content="https://www.acornbyte.com/assets/social-preview.png">
+
+<!-- Icons -->
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<!-- Type -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AcornByte, LLC",
+  "legalName": "AcornByte, LLC",
+  "url": "https://www.acornbyte.com/",
+  "slogan": "efficiency, engineered.",
+  "email": "ewaisg@acornbyte.com",
+  "description": "AI and ML technology company delivering solutions to streamline business processes and automate workflows across any industry.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1378 Sienna Peak Cir",
+    "addressLocality": "Erie",
+    "addressRegion": "CO",
+    "postalCode": "80516",
+    "addressCountry": "US"
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   AcornByte - AI/ML Technology Startup
+   Colors: navy #131c2d, gold #d1902a, light grey #d8d4c8
+   ============================================================ */
+:root{
+  --bg:#131c2d;              /* navy */
+  --bg-deep:#0a1219;         /* deeper navy */
+  --bg-raise:#1a2838;        /* raised surface */
+  --panel:rgba(26,40,56,.42);
+  --panel-solid:#1a2838;
+  --edge:rgba(209,144,42,.12);
+  --edge-strong:rgba(209,144,42,.24);
+  --ink:#f9fafb;
+  --ink-soft:#d8d4c8;        /* light grey */
+  --ink-faint:#8b8985;
+  --gold:#d1902a;            /* gold accent */
+  --gold-deep:#b57a1f;
+  --gold-soft:#e5a940;
+  --gold-glow:rgba(209,144,42,.20);
+  --navy:#131c2d;
+  --navy-glow:rgba(19,28,45,.14);
+  --display:"Space Grotesk",-apple-system,"Segoe UI",sans-serif;
+  --body:"Inter",-apple-system,"Segoe UI",sans-serif;
+  --maxw:1200px;
+  --radius:20px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--body);
+  font-weight:400;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--gold);color:#fff}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+
+/* atmospheric background */
+.bg{position:fixed;inset:0;z-index:-3;pointer-events:none;
+  background:
+    radial-gradient(1100px 700px at 82% -10%, var(--gold-glow), transparent 60%),
+    radial-gradient(900px 600px at -10% 110%, var(--navy-glow), transparent 55%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+}
+.bg-grid{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.5;
+  background-image:
+    linear-gradient(rgba(209,144,42,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(209,144,42,.06) 1px, transparent 1px);
+  background-size:72px 72px;
+  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 0%, #000 20%, transparent 100%);
+          mask-image:radial-gradient(ellipse 80% 70% at 50% 0%, #000 20%, transparent 100%);
+}
+.bg-grain{position:fixed;inset:0;z-index:-1;opacity:.04;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:40px;padding-right:40px}
+
+/* shared bits */
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-size:.74rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.kicker::before{content:"";width:22px;height:1px;background:var(--gold);opacity:.8}
+.sec-head{margin-bottom:64px;max-width:680px}
+.sec-head h2,.h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.2vw,3.2rem);line-height:1.12;letter-spacing:-.025em;color:var(--ink)}
+.sec-head h2 em,.h2 em{font-style:normal;color:var(--gold)}
+.sec-head p{margin-top:20px;color:var(--ink-soft);font-size:1.1rem;line-height:1.7}
+section{padding:128px 0;position:relative;scroll-margin-top:90px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(19,28,45,.62);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+header.nav.scrolled{border-bottom-color:var(--edge);background:rgba(10,18,25,.82)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:84px;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.brand .wm{height:24px;width:auto}
+nav ul{display:flex;gap:38px;list-style:none}
+nav a{color:var(--ink-soft);text-decoration:none;font-size:.94rem;font-weight:500;position:relative;transition:color .2s}
+nav a:hover{color:var(--ink)}
+nav a::after{content:"";position:absolute;left:0;bottom:-7px;height:2px;width:0;background:var(--gold);transition:width .25s var(--ease)}
+nav a:hover::after{width:100%}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:100px;background:var(--gold);color:#fff;font-weight:600;font-size:.92rem;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px var(--gold-glow);background:var(--gold-soft)}
+.nav-toggle{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--edge-strong);background:rgba(26,40,56,.5);color:var(--ink);cursor:pointer;place-items:center}
+.nav-toggle svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round}
+.nav-toggle .x{display:none}
+.nav-toggle[aria-expanded="true"] .burger{display:none}
+.nav-toggle[aria-expanded="true"] .x{display:block}
+.mobile-menu{display:none;border-top:1px solid var(--edge);background:rgba(10,18,25,.96);padding:12px 0 22px}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:14px 0;color:var(--ink);text-decoration:none;font-family:var(--display);font-size:1.25rem;font-weight:500;border-bottom:1px solid var(--edge)}
+.mobile-menu a:last-child{border-bottom:0}
+@media(max-width:820px){
+  nav ul{display:none}
+  .nav-cta{display:none}
+  .nav-toggle{display:grid}
+  .nav-inner{height:72px}
+}
+
+/* hero */
+.hero{position:relative;padding:118px 0 104px;overflow:hidden;min-height:88vh;display:flex;align-items:center}
+.hero .wrap{position:relative;z-index:1;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-size:.74rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:36px;padding:8px 14px 8px 10px;border:1px solid rgba(209,144,42,.35);border-radius:100px;background:rgba(209,144,42,.06);opacity:0;animation:rise .7s .1s forwards}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(209,144,42,.6);animation:pulse 2.2s infinite}
+.hero h1{font-family:var(--display);font-weight:600;font-size:clamp(2.8rem,6.4vw,5rem);line-height:1.04;letter-spacing:-.03em;max-width:15ch;margin-bottom:30px}
+.hero h1 em{font-style:normal;color:var(--gold);position:relative;white-space:nowrap}
+.hero h1 .ln{display:block;opacity:0;animation:rise .8s forwards}
+.hero h1 .ln:nth-child(1){animation-delay:.18s}
+.hero h1 .ln:nth-child(2){animation-delay:.30s}
+.hero h1 .ln:nth-child(3){animation-delay:.42s}
+.hero .tagline{font-family:var(--body);font-weight:500;font-size:.98rem;letter-spacing:.06em;color:var(--gold);margin-bottom:18px;opacity:0;animation:rise .8s .48s forwards}
+.hero .tagline::before{content:"// ";opacity:.6}
+.hero p.lede{font-size:1.2rem;line-height:1.7;color:var(--ink-soft);max-width:52ch;margin-bottom:44px;opacity:0;animation:rise .8s .56s forwards}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:rise .8s .68s forwards}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:100px;font-weight:600;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s,color .2s;cursor:pointer;border:1px solid transparent;font-family:var(--body)}
+.btn-primary{background:var(--gold);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px var(--gold-glow);background:var(--gold-soft)}
+.btn-ghost{background:rgba(26,40,56,.35);border-color:var(--edge-strong);color:var(--ink);backdrop-filter:blur(6px)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-soft)}
+.btn .arr{transition:transform .2s}
+.btn:hover .arr{transform:translateX(4px)}
+.hero-meta{margin-top:52px;display:flex;gap:34px;flex-wrap:wrap;opacity:0;animation:rise .8s .82s forwards}
+.hero-meta div{font-family:var(--body);font-size:.78rem;letter-spacing:.08em;color:var(--ink-faint);text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.hero-meta div::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.8}
+
+/* ticker */
+.ticker{border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);background:rgba(10,18,25,.5);overflow:hidden;position:relative}
+.ticker::before,.ticker::after{content:"";position:absolute;top:0;bottom:0;width:140px;z-index:2;pointer-events:none}
+.ticker::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.ticker::after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
+.ticker-track{display:flex;width:max-content;animation:ticker 38s linear infinite}
+.ticker-track span{display:inline-flex;align-items:center;gap:22px;padding:18px 26px;font-family:var(--body);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+.ticker-track span i{width:6px;height:6px;border-radius:50%;background:var(--gold);font-style:normal}
+@keyframes ticker{to{transform:translateX(-50%)}}
+
+/* services grid */
+.grid{display:grid;gap:22px}
+.svc-grid{grid-template-columns:repeat(2,1fr)}
+@media(max-width:760px){.svc-grid{grid-template-columns:1fr}}
+.card{position:relative;background:linear-gradient(165deg,rgba(26,40,56,.55),rgba(10,18,25,.6));border:1px solid var(--edge);border-radius:var(--radius);padding:44px 42px;overflow:hidden;transition:transform .4s var(--ease),border-color .4s;--mx:50%;--my:50%}
+.card::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:radial-gradient(420px circle at var(--mx) var(--my), rgba(209,144,42,.14), transparent 45%);
+}
+.card::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
+  background:linear-gradient(160deg,var(--gold),transparent 45%,transparent 70%,rgba(209,144,42,.5));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+  opacity:0;transition:opacity .4s;
+}
+.card:hover{transform:translateY(-6px);border-color:transparent}
+.card:hover::before,.card:hover::after{opacity:1}
+.card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}
+.card .ico{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;background:rgba(209,144,42,.10);border:1px solid rgba(209,144,42,.28);color:var(--gold)}
+.card .ico svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.card .num{font-family:var(--body);font-size:.8rem;color:var(--ink-faint);letter-spacing:.1em}
+.card h3{font-family:var(--display);font-weight:600;font-size:1.5rem;letter-spacing:-.015em;margin-bottom:14px;line-height:1.2}
+.card p{color:var(--ink-soft);font-size:1.02rem}
+
+/* product section */
+.product{background:linear-gradient(180deg,transparent,rgba(10,18,25,.7))}
+.product-inner{display:grid;grid-template-columns:1fr 1.05fr;gap:84px;align-items:center}
+@media(max-width:880px){.product-inner{grid-template-columns:1fr;gap:44px}}
+.product h2{margin-bottom:24px}
+.product p.body{font-size:1.18rem;color:var(--ink-soft);line-height:1.7;margin-bottom:24px}
+.product p.body strong{color:var(--ink);font-weight:500}
+.product-features{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
+.feature-item{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:var(--panel);border:1px solid var(--edge);border-radius:12px;transition:border-color .3s,transform .3s var(--ease)}
+.feature-item:hover{border-color:rgba(209,144,42,.45);transform:translateX(6px)}
+.feature-item svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px}
+.feature-item span{color:var(--ink-soft);font-size:.98rem}
+.product-cta{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:100px;background:var(--gold);color:#fff;font-weight:600;font-size:.98rem;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s}
+.product-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px var(--gold-glow);background:var(--gold-soft)}
+.product-status{font-family:var(--body);font-size:.82rem;letter-spacing:.08em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.product-status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(209,144,42,.6);animation:pulse 2.2s infinite}
+.product-visual{position:relative;background:linear-gradient(165deg,rgba(26,40,56,.55),rgba(10,18,25,.6));border:1px solid var(--edge);border-radius:var(--radius);padding:48px 44px;min-height:420px;display:flex;flex-direction:column;justify-content:center;gap:24px}
+.product-visual::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:.6;
+  background:radial-gradient(600px circle at 70% 40%, rgba(209,144,42,.18), transparent 50%);
+}
+.visual-item{position:relative;z-index:1;background:rgba(10,18,25,.7);border:1px solid rgba(209,144,42,.2);border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:16px;backdrop-filter:blur(4px)}
+.visual-icon{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:rgba(209,144,42,.15);border:1px solid rgba(209,144,42,.3);flex-shrink:0}
+.visual-icon svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.visual-text{display:flex;flex-direction:column;gap:4px;flex:1}
+.visual-text strong{font-family:var(--display);font-weight:600;font-size:1.05rem;color:var(--ink);letter-spacing:-.01em}
+.visual-text span{font-size:.88rem;color:var(--ink-soft)}
+.visual-status{font-family:var(--body);font-size:.74rem;letter-spacing:.08em;color:var(--gold);text-transform:uppercase;padding:4px 10px;border:1px solid rgba(209,144,42,.3);border-radius:6px;background:rgba(209,144,42,.08);flex-shrink:0}
+
+/* more products */
+.more-products{padding:64px 0;background:linear-gradient(180deg,rgba(10,18,25,.3),transparent)}
+.more-products .sec-head{margin-bottom:44px;text-align:center;max-width:100%}
+.more-product-card{position:relative;background:linear-gradient(165deg,rgba(26,40,56,.45),rgba(10,18,25,.5));border:1px solid var(--edge);border-radius:var(--radius);padding:36px 40px;max-width:840px;margin:0 auto}
+.more-product-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;gap:20px}
+.more-product-header h3{font-family:var(--display);font-weight:600;font-size:1.8rem;letter-spacing:-.02em;color:var(--ink);margin-bottom:10px}
+.more-product-icon{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:rgba(209,144,42,.08);border:1px solid rgba(209,144,42,.22);flex-shrink:0}
+.more-product-icon svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.more-product-description{color:var(--ink-soft);font-size:1.05rem;line-height:1.7;margin-bottom:24px}
+.more-product-features{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.more-product-features span{display:flex;align-items:center;gap:10px;color:var(--ink-soft);font-size:.92rem;padding:10px 14px;background:rgba(26,40,56,.4);border:1px solid rgba(209,144,42,.12);border-radius:8px}
+.more-product-features svg{width:12px;height:12px;fill:var(--gold);stroke:none;flex-shrink:0}
+@media(max-width:720px){.more-product-features{grid-template-columns:1fr}}
+
+/* mission */
+.mission{background:linear-gradient(180deg,transparent,rgba(10,18,25,.7))}
+.mission-inner{display:grid;grid-template-columns:1.05fr 1fr;gap:84px;align-items:center}
+@media(max-width:880px){.mission-inner{grid-template-columns:1fr;gap:44px}}
+.mission h2{margin-bottom:24px}
+.mission p.body{font-size:1.18rem;color:var(--ink-soft);line-height:1.7}
+.mission p.body strong{color:var(--ink);font-weight:500}
+.stat-stack{display:flex;flex-direction:column;gap:16px}
+.stat{position:relative;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:26px;padding:26px 30px;background:var(--panel);border:1px solid var(--edge);border-radius:16px;overflow:hidden;transition:border-color .3s,transform .3s var(--ease)}
+.stat:hover{border-color:rgba(209,144,42,.45);transform:translateX(6px)}
+.stat .big{font-family:var(--display);font-weight:600;font-size:1.9rem;color:var(--gold);line-height:1;letter-spacing:-.02em;min-width:7ch}
+.stat .lbl{color:var(--ink-soft);font-size:1.02rem}
+.stat .bar{position:absolute;left:0;bottom:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);width:0;transition:width 1.4s var(--ease)}
+.stat.in .bar{width:var(--w)}
+
+/* why */
+.why-grid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:880px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.why-grid{grid-template-columns:1fr}}
+.why{padding:36px 32px;border-radius:16px;border:1px solid var(--edge);background:var(--panel);transition:background .3s,transform .3s var(--ease),border-color .3s;position:relative;overflow:hidden}
+.why:hover{background:rgba(26,40,56,.7);transform:translateY(-4px);border-color:var(--edge-strong)}
+.why .wn{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.why .wn span{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:rgba(209,144,42,.10);border:1px solid rgba(209,144,42,.28);color:var(--gold);font-family:var(--body);font-size:.82rem}
+.why h4{font-family:var(--display);font-weight:600;font-size:1.22rem;letter-spacing:-.01em;margin-bottom:12px}
+.why p{color:var(--ink-soft);font-size:1rem;line-height:1.65}
+
+/* custom section */
+.custom{background:linear-gradient(180deg,rgba(10,18,25,.3),transparent)}
+.custom-card{position:relative;background:linear-gradient(165deg,rgba(26,40,56,.55),rgba(10,18,25,.6));border:1px solid var(--edge);border-radius:28px;padding:64px 56px;text-align:center;overflow:hidden}
+.custom-card::before{content:"";position:absolute;top:-35%;left:50%;transform:translateX(-50%);width:820px;height:460px;background:radial-gradient(circle,rgba(209,144,42,.18),transparent 68%);pointer-events:none}
+.custom-card>*{position:relative;z-index:1}
+.custom-card h2{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.03em;line-height:1.1;margin-bottom:20px}
+.custom-card p{color:var(--ink-soft);font-size:1.08rem;line-height:1.7;max-width:58ch;margin:0 auto}
+
+/* cta / contact */
+.cta{position:relative;overflow:hidden}
+.cta-card{position:relative;background:linear-gradient(150deg,rgba(26,40,56,.75),rgba(10,18,25,.8));border:1px solid var(--edge);border-radius:28px;padding:96px 72px;text-align:center;overflow:hidden}
+.cta-card::before{content:"";position:absolute;top:-55%;left:50%;transform:translateX(-50%);width:820px;height:460px;background:radial-gradient(circle,rgba(209,144,42,.26),transparent 68%);pointer-events:none}
+.cta-card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(rgba(209,144,42,.08) 1px, transparent 1px),linear-gradient(90deg, rgba(209,144,42,.08) 1px, transparent 1px);background-size:48px 48px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 80% at 50% 50%, #000 10%, transparent 100%);mask-image:radial-gradient(ellipse 70% 80% at 50% 50%, #000 10%, transparent 100%)}
+.cta-card>*{position:relative;z-index:1}
+.cta-card h2{font-family:var(--display);font-weight:600;font-size:clamp(2.1rem,4.6vw,3.4rem);letter-spacing:-.03em;line-height:1.1;margin-bottom:24px}
+.cta-card h2 em{font-style:normal;color:var(--gold)}
+.cta-card p{color:var(--ink-soft);font-size:1.15rem;line-height:1.7;max-width:58ch;margin:0 auto 44px}
+.contact-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.contact-pill{display:inline-flex;align-items:center;gap:12px;padding:15px 26px;border-radius:100px;border:1px solid var(--edge-strong);background:rgba(10,18,25,.55);color:var(--ink);text-decoration:none;font-weight:500;font-family:var(--body);font-size:.95rem;letter-spacing:.02em;transition:border-color .25s,color .25s,transform .2s,box-shadow .25s}
+.contact-pill:hover{border-color:var(--gold);color:var(--gold-soft);transform:translateY(-2px);box-shadow:0 12px 30px rgba(209,144,42,.15)}
+.contact-pill svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* footer */
+footer{padding:60px 0 44px;border-top:1px solid var(--edge);margin-top:40px;background:rgba(10,18,25,.6)}
+.foot-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:44px;flex-wrap:wrap}
+.foot-brand{display:flex;flex-direction:column;gap:12px}
+.foot-brand .wm{height:18px;width:auto}
+.foot-tag{font-family:var(--body);color:var(--gold);font-size:.76rem;letter-spacing:.06em;margin-top:8px}
+.foot-tag::before{content:"// ";opacity:.6}
+.foot-address{color:var(--ink-soft);font-size:.86rem;line-height:1.7;font-style:normal;max-width:38ch}
+.foot-address strong{display:block;color:var(--ink-faint);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;margin-top:16px;font-weight:500}
+.foot-links{display:flex;gap:26px;flex-wrap:wrap}
+.foot-links a{color:var(--ink-faint);text-decoration:none;font-size:.92rem;transition:color .2s}
+.foot-links a:hover{color:var(--gold-soft)}
+.copy{color:var(--ink-faint);font-size:.86rem;font-family:var(--body);letter-spacing:.02em}
+
+/* privacy dialog */
+dialog{border:1px solid var(--edge);border-radius:var(--radius);background:var(--bg-raise);color:var(--ink);padding:48px;max-width:640px;margin:auto}
+dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(6px)}
+dialog h2{font-family:var(--display);font-weight:600;font-size:2rem;margin-bottom:24px;color:var(--ink)}
+dialog h2 em{font-style:normal;color:var(--gold)}
+dialog p{color:var(--ink-soft);line-height:1.7;margin-bottom:16px}
+.dialog-close{position:absolute;top:20px;right:20px;width:36px;height:36px;border:1px solid var(--edge);border-radius:8px;background:rgba(26,40,56,.5);color:var(--ink-soft);cursor:pointer;font-size:1.4rem;transition:color .2s,border-color .2s}
+.dialog-close:hover{color:var(--gold);border-color:var(--gold)}
+
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(209,144,42,.55)}70%{box-shadow:0 0 0 9px rgba(209,144,42,0)}100%{box-shadow:0 0 0 0 rgba(209,144,42,0)}}
+
+@media(max-width:820px){
+  .wrap{padding-left:22px;padding-right:22px}
+  section{padding:88px 0}
+  .hero{padding:96px 0 84px;min-height:auto}
+  .hero h1{font-size:clamp(2.35rem,11vw,2.9rem)}
+  .hero-meta{margin-top:44px;gap:18px}
+  .card{padding:34px 28px}
+  .cta-card{padding:60px 26px;border-radius:22px}
+  .custom-card{padding:48px 32px;border-radius:22px}
+  .sec-head{margin-bottom:44px}
+  .ticker::before,.ticker::after{width:60px}
+  .product-inner{grid-template-columns:1fr}
+  .product-visual{min-height:auto;padding:32px 28px}
+  .more-products{padding:48px 0}
+  .more-product-card{padding:28px 24px}
+  .more-product-header h3{font-size:1.5rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal,.eyebrow,.hero h1 .ln,.hero .tagline,.hero p.lede,.hero-actions,.hero-meta{opacity:1;transform:none}
+  .stat .bar{width:var(--w)}
+}
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-    <symbol id="acorn" viewBox="0 0 80 80"><path d="M41.836 14.7747H38.164L14.98 65.1747H18.94L39.964 18.8067L61.06 65.1747H65.02Z" fill="currentColor"/></symbol>
-    <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></symbol>
-    <symbol id="chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
-    <symbol id="grid" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 10h18M10 10v11"/></symbol>
-    <symbol id="flow" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><path d="M17 10V7h-3M7 14v3h3"/></symbol>
-    <symbol id="web" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 9h20M6 6.5h.1M9 6.5h.1m0 6-3 2.5L9 17m6-5 3 2.5-3 2.5"/></symbol>
-    <symbol id="screen" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4M6 7h12"/></symbol>
-    <symbol id="wifi" viewBox="0 0 24 24"><path d="M2 8a16 16 0 0 1 20 0M5 12a11 11 0 0 1 14 0m-11 4a6 6 0 0 1 8 0"/><circle cx="12" cy="20" r="1"/></symbol>
-    <symbol id="folder" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h5l3 4h6a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/><path d="m9 14 2 2 4-4"/></symbol>
-    <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
-    <symbol id="mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 6 9 7 9-7"/></symbol>
-    <symbol id="phone" viewBox="0 0 24 24"><path d="m7 3 3 5-3 3a16 16 0 0 0 6 6l3-3 5 3c-1 4-4 5-7 3A23 23 0 0 1 4 10C2 7 3 4 7 3Z"/></symbol>
-    <symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/></symbol>
-    <symbol id="moon" viewBox="0 0 24 24"><path d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5Z"/></symbol>
-  </svg>
+<div class="bg"></div><div class="bg-grid"></div><div class="bg-grain"></div>
 
-  <header class="site-header">
-    <div class="shell header-inner">
-      <a class="brand" href="#home" aria-label="AcornByte home"><span class="brand-logos"><img class="signature-logo logo-on-dark" src="assets/brand/acornbyte-wordmark-on-dark.svg" alt="AcornByte" width="392" height="75"><img class="signature-logo logo-on-light" src="assets/brand/acornbyte-wordmark-on-light.svg" alt="AcornByte" width="392" height="75"></span></a>
-      <nav id="main-nav" aria-label="Main navigation">
-        <a href="#services">Solutions</a><a href="#work">Selected work</a><a href="#approach">How it works</a><a href="#about">About</a>
-        <a class="button button-dark nav-cta" href="#contact">Let’s talk <svg class="icon"><use href="#arrow"/></svg></a>
-      </nav>
-      <div class="header-actions">
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme"><svg class="icon-moon" aria-hidden="true"><use href="#moon"/></svg><svg class="icon-sun" aria-hidden="true"><use href="#sun"/></svg></button>
-        <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav"><span></span><span></span></button>
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="AcornByte home">
+      <img class="wm" src="assets/brand/acornbyte-wordmark-on-dark.svg" alt="AcornByte" width="392" height="75">
+    </a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#solutions">Solutions</a></li>
+        <li><a href="#stampit">Stampit</a></li>
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="#contact">Get in Touch</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+      <svg class="burger" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="wrap">
+      <a href="#solutions">Solutions</a>
+      <a href="#stampit">Stampit</a>
+      <a href="#mission">Mission</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" style="color:var(--gold)">Get in Touch</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> AI & ML Technology Startup</div>
+    <h1>
+      <span class="ln">AI & ML for business</span>
+      <span class="ln">processes, for companies</span>
+      <span class="ln">of <em>any size</em></span>
+    </h1>
+    <p class="tagline">efficiency, engineered.</p>
+    <p class="lede">AcornByte delivers AI and machine learning solutions to streamline operations, automate workflows, and unlock insights across any industry. Built for businesses ready to scale efficiently.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#stampit">Explore Stampit <span class="arr">&rarr;</span></a>
+      <a class="btn btn-ghost" href="#contact">Start a Conversation</a>
+    </div>
+    <div class="hero-meta">
+      <div>AI-Powered Insights</div>
+      <div>Process Automation</div>
+      <div>Security & Connectivity</div>
+      <div>Custom Technology</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <span><i></i>AI-Powered Data Insights</span>
+    <span><i></i>Process Automation & Analytics</span>
+    <span><i></i>Secure Connectivity & Protection</span>
+    <span><i></i>Custom Technology Solutions</span>
+    <span><i></i>AI</span>
+    <span><i></i>Cloud</span>
+    <span><i></i>Custom</span>
+    <span><i></i>efficiency, engineered.</span>
+  </div>
+</div>
+
+<!-- SOLUTIONS -->
+<section id="solutions">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">What We Do</div>
+      <h2>Technology that works <em>with your business</em></h2>
+      <p>Platform products and custom solutions powered by AI and machine learning to help your team work smarter.</p>
+    </div>
+    <div class="grid svc-grid">
+      <article class="card reveal">
+        <div class="card-top">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+          <div class="num">01</div>
+        </div>
+        <h3>AI-Powered Data Insights</h3>
+        <p>Extract intelligence from your documents and data with advanced AI. Automate extraction, classification, and routing to power informed decisions at scale.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-top">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="num">02</div>
+        </div>
+        <h3>Process Automation & Analytics</h3>
+        <p>Streamline workflows and gain real-time visibility into your operations. Built-in analytics help you identify bottlenecks and optimize efficiency.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-top">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div class="num">03</div>
+        </div>
+        <h3>Security & Connectivity</h3>
+        <p>Enterprise-grade security and seamless integrations keep your data protected while connecting the systems you already use.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-top">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 6l-4 12"/></svg></div>
+          <div class="num">04</div>
+        </div>
+        <h3>Custom Technology</h3>
+        <p>Purpose-built applications and integrations tailored to your unique workflows. Cloud-native architecture designed to scale with your business.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT: STAMPIT -->
+<section id="stampit" class="product">
+  <div class="wrap product-inner">
+    <div class="reveal">
+      <div class="kicker">Our First Product</div>
+      <h2 class="h2">Introducing <em>Stampit</em></h2>
+      <div class="product-status">In Development / Early Access</div>
+      <p class="body">A web-based invoice approval and digital stamping platform that uses AI to read, route, and approve invoices automatically. Built on AWS with advanced document intelligence.</p>
+      <div class="product-features">
+        <div class="feature-item">
+          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          <span>AI document extraction reads and understands invoices</span>
+        </div>
+        <div class="feature-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>
+          <span>Automated routing and approval workflows</span>
+        </div>
+        <div class="feature-item">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8m8 4H8m2-8H8"/></svg>
+          <span>Digital stamping with audit trail and compliance</span>
+        </div>
+        <div class="feature-item">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>
+          <span>Built on AWS (Textract, Bedrock, S3)</span>
+        </div>
+      </div>
+      <a class="product-cta" href="mailto:ewaisg@acornbyte.com?subject=Stampit Early Access Request">Request Early Access <span class="arr">&rarr;</span></a>
+    </div>
+    <div class="product-visual reveal">
+      <div class="visual-item">
+        <div class="visual-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8m8 4H8m2-8H8"/></svg>
+        </div>
+        <div class="visual-text">
+          <strong>Invoice received</strong>
+          <span>AI extracts vendor, amount, date</span>
+        </div>
+        <div class="visual-status">Processing</div>
+      </div>
+      <div class="visual-item">
+        <div class="visual-icon">
+          <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="visual-text">
+          <strong>Routed for approval</strong>
+          <span>Assigned to project manager</span>
+        </div>
+        <div class="visual-status">Pending</div>
+      </div>
+      <div class="visual-item">
+        <div class="visual-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <div class="visual-text">
+          <strong>Approved & stamped</strong>
+          <span>Digital stamp applied, ready for payment</span>
+        </div>
+        <div class="visual-status">Complete</div>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main id="main">
-    <div class="hero-stage" id="hero-stage"><canvas class="fx-canvas" aria-hidden="true"></canvas><div class="fx-scrim" aria-hidden="true"></div><section class="hero shell" id="home" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="live-dot"></span> CUSTOM SOFTWARE. PRACTICAL AI. PERSONAL SERVICE.</div>
-        <h1 id="hero-title">Better tools for<br> the work you<br> <em>actually do.</em></h1>
-        <p class="hero-description">I build business apps, project dashboards, document workflows and AI integrations around the way you work—so you can spend less time moving information between tools and more time using it.</p>
-        <div class="hero-actions"><button class="button button-dark" data-open-brief>Discuss your project <svg class="icon"><use href="#arrow"/></svg></button><a class="text-button" href="#work">Explore selected work <span aria-hidden="true">↓</span></a></div>
-        <div class="hero-note"><p>From the first conversation to the handover.<br><strong>Clear scope. Direct communication. Practical delivery.</strong></p></div>
-        <a class="local-help" href="#services" data-local-help>Need computer, Wi-Fi or home-office help? <span>Explore local services ↗</span></a>
-      </div>
-      <div class="workspace-art" role="img" aria-label="Illustrative project workspace connecting project information, document review and a weekly update. Fictional demonstration, not customer data.">
-        <div class="workspace-art-top"><img src="assets/brand/acornbyte-wordmark-on-dark.svg" alt="" width="392" height="75"><span>BUILT AROUND YOUR WORK</span></div>
-        <div class="workspace-window">
-          <div class="workspace-toolbar"><span class="workspace-avatar">A</span><span>Project workspace</span><span class="workspace-demo">CONCEPT VIEW</span></div>
-          <div class="workspace-body"><div class="workspace-heading"><span>OVERVIEW / WEEKLY REVIEW</span><h2>Everything in view.</h2><p>One place for the next useful step.</p></div>
-          <div class="workspace-stats"><div><span>Projects</span><strong>In focus <i></i></strong></div><div><span>Documents</span><strong>Ready to review <i></i></strong></div></div>
-          <div class="workspace-chart"><div><strong>Project activity</strong><span>This week · sample data</span></div><div class="chart-bars" aria-hidden="true"><i style="--bar:35%"></i><i style="--bar:52%"></i><i style="--bar:43%"></i><i style="--bar:68%"></i><i style="--bar:59%"></i><i style="--bar:86%"></i><i style="--bar:74%"></i></div><div class="chart-labels"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span></div></div>
-          <div class="workspace-action"><span class="action-check">✓</span><div><strong>Weekly update prepared</strong><span>Review the details before sharing.</span></div><span aria-hidden="true">↗</span></div></div>
+<!-- MORE IN DEVELOPMENT -->
+<section class="more-products">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">More in Development</div>
+      <h2>Building the future of <em>work</em></h2>
+    </div>
+    <div class="more-product-card reveal">
+      <div class="more-product-header">
+        <div>
+          <h3>FaciliOne</h3>
+          <div class="product-status">In Development</div>
         </div>
-        <div class="workspace-connect"><span>Project information</span><b aria-hidden="true">→</b><span>Document review</span><b aria-hidden="true">→</b><span>Clear next steps</span></div>
-        <p class="workspace-caption">A small idea of what a connected workflow can look like.</p>
-      </div>
-    </section><div class="fx-switch-wrap shell"><div class="fx-switch" role="group" aria-label="Background scene"><span class="fx-label" aria-hidden="true">Scene</span><button type="button" data-scene="flow" aria-pressed="false">Flow</button><button type="button" data-scene="terrain" aria-pressed="false">Terrain</button><button type="button" data-scene="field" aria-pressed="false">Byte Field</button><button type="button" data-scene="net" aria-pressed="false">Constellation</button><button type="button" data-scene="orbit" aria-pressed="false">Orbit</button><button type="button" class="fx-pause" data-scene-pause aria-pressed="false" aria-label="Pause background motion">Pause</button></div></div></div>
-
-    <div class="principles-strip"><div class="shell"><span>Business apps & dashboards</span><span class="strip-acorn" aria-hidden="true">✳</span><span>Invoice & PDF workflows</span><span class="strip-acorn" aria-hidden="true">✳</span><span>AI & integrations</span><span class="strip-acorn" aria-hidden="true">✳</span><span>Web & mobile apps</span></div></div>
-
-    <section class="section shell services" id="services" aria-labelledby="services-title">
-      <div class="section-head reveal"><div><p class="eyebrow">01 / BUILT AROUND YOUR WORKFLOW</p><h2 id="services-title">What would work<br> <em>better?</em></h2></div><p>Projects in one place. Invoices in another.<br> Turn everyday workarounds into tools that fit.</p></div>
-      <div class="service-tabs" role="tablist" aria-label="Choose a service track"><button id="business-tab" class="service-tab active" role="tab" aria-selected="true" aria-controls="business-panel" tabindex="0" data-service="business"><svg class="icon"><use href="#grid"/></svg> For your business <span>01</span></button><button id="tech-tab" class="service-tab" role="tab" aria-selected="false" aria-controls="tech-panel" tabindex="-1" data-service="tech"><svg class="icon"><use href="#screen"/></svg> For your everyday tech <span>02</span></button></div>
-      <div id="business-panel" class="service-panel" role="tabpanel" aria-labelledby="business-tab">
-        <div class="service-intro"><span class="pill">FOR SMALL BUSINESSES & PROJECT TEAMS</span><h3>From a focused PDF tool<br> to a connected project workspace.</h3><p>For consultants, contractors and teams coordinating projects, people and information. Start with a clear problem and a practical next step.</p></div>
-        <div class="service-grid business-grid"><article class="service-item"><span class="service-number">01 /</span><svg class="service-icon" aria-hidden="true"><use href="#grid"/></svg><h4>Custom business apps<br> & dashboards</h4><p>Bring projects, tasks, time and reporting into a workspace built around your process, with the forms, filters and exports your team needs.</p><button class="inline-link" data-open-brief data-topic="Business app or dashboard">Talk about a business tool <span aria-hidden="true">↗</span></button></article><article class="service-item"><span class="service-number">02 /</span><svg class="service-icon" aria-hidden="true"><use href="#folder"/></svg><h4>Document &<br> approval workflows</h4><p>Make recurring document work easier: invoice review steps, custom PDF stamps, project allocations, reusable templates and report exports.</p><button class="inline-link" data-open-brief data-topic="Document, invoice or PDF workflow">Improve a document workflow <span aria-hidden="true">↗</span></button></article><article class="service-item"><span class="service-number">03 /</span><svg class="service-icon" aria-hidden="true"><use href="#flow"/></svg><h4>Practical AI &<br> connected systems</h4><p>Give AI a defined job: review selected documents, draft updates or propose tasks from email, with people reviewing the decisions that matter.</p><button class="inline-link" data-open-brief data-topic="AI assistant or software integration">Explore an AI workflow <span aria-hidden="true">↗</span></button></article><article class="service-item"><span class="service-number">04 /</span><svg class="service-icon" aria-hidden="true"><use href="#web"/></svg><h4>Websites, web apps<br> & mobile tools</h4><p>Turn a specific idea into an application people can use, from a business website to a team portal, planning app or focused prototype.</p><button class="inline-link" data-open-brief data-topic="Website or mobile app">Discuss an app or website <span aria-hidden="true">↗</span></button></article></div>
-      </div>
-      <div id="tech-panel" class="service-panel" role="tabpanel" aria-labelledby="tech-tab" hidden>
-        <div class="service-intro"><span class="pill">TECH HELP. WITHOUT THE RUNAROUND.</span><h3>When your technology gets stuck,<br> you shouldn’t have to.</h3><p>Patient, straightforward help for your computer, your home office, and the everyday technology you depend on.</p></div>
-        <div class="service-grid">
-          <article class="service-item"><span class="service-number">01 /</span><svg class="service-icon"><use href="#screen"/></svg><h4>A smoother<br> home office.</h4><p>Computer troubleshooting, device setup, and help getting your workspace ready for the way you use it.</p><button class="inline-link" data-open-brief data-topic="Computer & home-office help">Describe the problem <span aria-hidden="true">↗</span></button></article>
-          <article class="service-item"><span class="service-number">02 /</span><svg class="service-icon"><use href="#wifi"/></svg><h4>Get everything<br> talking again.</h4><p>Wi-Fi troubleshooting and connected-device setup. Start with what isn’t working and we’ll discuss the options.</p><button class="inline-link" data-open-brief data-topic="Wi-Fi & connected devices">Talk about connectivity <span aria-hidden="true">↗</span></button></article>
-          <article class="service-item"><span class="service-number">03 /</span><svg class="service-icon"><use href="#folder"/></svg><h4>Less digital<br> clutter.</h4><p>File organization, backup guidance, and practical help using AI tools with more confidence.</p><button class="inline-link" data-open-brief data-topic="Files, backups & AI guidance">Find a starting point <span aria-hidden="true">↗</span></button></article>
+        <div class="more-product-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 10h18M10 10v11"/></svg>
         </div>
       </div>
-      <p class="service-footnote"><span class="small-dot"></span> Phone &amp; Teams consultations available.</p>
-    </section>
-
-    <section class="section work-section" id="work" aria-labelledby="work-title"><div class="shell">
-      <div class="section-head reveal"><div><p class="eyebrow">02 / FROM THE WORKBENCH</p><h2 id="work-title">Real workflows.<br> Purpose-built <em>tools.</em></h2></div><p>A selection of the systems I’ve been developing.<br> Each starts with a particular way of working.</p></div>
-      <div class="work-grid">
-        <article class="work-card reveal"><div class="work-visual portfolio-visual" aria-hidden="true"><div class="visual-top"><span>PROJECT WORKSPACE</span><span>↗</span></div><div class="portfolio-mini"><div class="mini-sidebar"><i></i><i></i><i></i><i></i></div><div class="mini-main"><b>Portfolio overview</b><div class="mini-metrics"><span>Projects<i></i></span><span>People<i></i></span><span>Reports<i></i></span></div><div class="mini-table"><span>Weekly reporting<b>In review</b></span><span>Resource planning<b>Active</b></span><span>Project updates<b>Draft</b></span></div></div></div></div><div class="work-card-copy"><div class="work-tags"><span>OPERATIONS</span><span>REPORTING</span></div><h3>Project & workforce reporting</h3><p>Workspaces that bring project portfolios, timesheets, utilization, invoices and reporting into a consistent view.</p><p class="work-detail">Role-based views, staffing tools and downloadable report packages for teams coordinating people across projects.</p><button class="inline-link" data-open-brief data-topic="Business app or dashboard">Discuss a similar tool <span aria-hidden="true">↗</span></button></div></article>
-        <article class="work-card reveal"><div class="work-visual document-visual" aria-hidden="true"><div class="visual-top"><span>DOCUMENT WORKFLOW</span><span>↗</span></div><div class="paper-stack"><div class="document-paper"><span>INVOICE / SAMPLE</span><b>Ready for review.</b><i></i><i></i><i></i><div class="review-stamp">REVIEWED<br><small>PROJECT ALLOCATION</small></div></div><div class="document-note"><span>✓</span> Review → Stamp → Export</div></div></div><div class="work-card-copy"><div class="work-tags"><span>DOCUMENTS</span><span>APPROVALS</span></div><h3>Invoice approvals & PDF tools</h3><p>Invoice review workflows, custom PDF stamps, project allocations and reusable document templates.</p><p class="work-detail">Focused tools for checking details, applying consistent information and exporting the documents your process needs.</p><button class="inline-link" data-open-brief data-topic="Document, invoice or PDF workflow">Improve your document flow <span aria-hidden="true">↗</span></button></div></article>
-        <article class="work-card reveal"><div class="work-visual ai-visual" aria-hidden="true"><div class="visual-top"><span>AI WORKSPACE</span><span>↗</span></div><div class="ai-mini"><span class="ai-question">Turn these notes into next steps.</span><div class="ai-answer"><span class="ai-mark">A</span><div><b>A draft to work from.</b><span>1. Organize the project notes</span><span>2. Prepare a weekly update</span><span>3. Confirm the open actions</span></div></div><div class="ai-review">REVIEW BEFORE TAKING ACTION <span>↗</span></div></div></div><div class="work-card-copy"><div class="work-tags"><span>AI</span><span>INTEGRATIONS</span></div><h3>AI workspaces & integrations</h3><p>AI workspace development with provider connections, conversation tools, document inputs and local-model options.</p><p class="work-detail">Practical integrations that help organize information and propose actions for review within an existing workflow.</p><button class="inline-link" data-open-brief data-topic="AI assistant or software integration">Explore a connected workflow <span aria-hidden="true">↗</span></button></div></article>
-      </div><p class="work-disclaimer">Development examples, with illustrative interface concepts and fictional data. Availability, integrations and scope are discussed for each project.</p>
-    </div></section>
-
-    <section class="demo-section" id="in-action" aria-labelledby="demo-title">
-      <div class="shell demo-layout">
-        <div class="demo-copy reveal"><p class="eyebrow light">TRY THE INTERACTIVE WORKBENCH</p><h2 id="demo-title">A little structure.<br> A lot more <em>clarity.</em></h2><p>Get a feel for a focused tool. Add a task, follow a sample workflow, or try a home-office checklist.</p><div class="demo-tabs" role="tablist" aria-label="Interactive examples"><button class="demo-tab active" role="tab" id="tracker-tab" aria-controls="demo-content" aria-selected="true" data-demo="tracker">Project tracker <span>↗</span></button><button class="demo-tab" role="tab" id="workflow-tab" aria-controls="demo-content" aria-selected="false" tabindex="-1" data-demo="workflow">Workflow map <span>↗</span></button><button class="demo-tab" role="tab" id="checklist-tab" aria-controls="demo-content" aria-selected="false" tabindex="-1" data-demo="checklist">Tech checklist <span>↗</span></button></div><p class="demo-disclaimer">Illustrative examples with fictional data.<br> Your solution starts with your actual needs.</p></div>
-        <div class="demo-window"><div class="window-chrome"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>THE ACORNBYTE WORKBENCH</span><span aria-hidden="true">↗</span></div><div id="demo-content" role="tabpanel" aria-labelledby="tracker-tab" tabindex="0"></div></div>
+      <p class="more-product-description">An AI project command center for teams of any industry. Brings project portfolios, tasks, email and Microsoft 365 communication, documents and an AI assistant into one workspace, so project leaders see commitments, risks and next steps without digging through inboxes.</p>
+      <div class="more-product-features">
+        <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/></svg> Project portfolios & tasks</span>
+        <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/></svg> Email & Microsoft 365 integration</span>
+        <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/></svg> AI assistant for insights</span>
+        <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/></svg> Unified workspace</span>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section class="section shell approach" id="approach" aria-labelledby="approach-title">
-      <div class="section-head reveal"><div><p class="eyebrow">03 / A CLEAR NEXT STEP</p><h2 id="approach-title">Start with the problem.<br> Build what <em>fits.</em></h2></div><p>Start small. Agree on the work.<br> Understand what you’re getting.</p></div>
-      <div class="process-grid"><article class="process-step reveal"><div class="step-top"><span>01</span><span aria-hidden="true">↗</span></div><h3>Walk through the work.</h3><p>Tell me what you do now, where the information lives and what slows you down. A short description or a sanitized example is a useful start.</p></article><article class="process-step reveal"><div class="step-top"><span>02</span><span aria-hidden="true">↗</span></div><h3>Define the first useful version.</h3><p>We’ll agree on scope, deliverables, timing and price. Software subscriptions, hosting, AI usage and other outside costs are discussed separately.</p></article><article class="process-step reveal"><div class="step-top"><span>03</span><svg><use href="#acorn"/></svg></div><h3>Build, review & hand over.</h3><p>Review the tool against your workflow. Get a walkthrough and an agreed handover, with any ongoing support or next phase defined as part of the project.</p></article></div>
-    </section>
+<!-- MISSION -->
+<section id="mission" class="mission">
+  <div class="wrap mission-inner">
+    <div class="reveal">
+      <div class="kicker">Our Mission</div>
+      <h2 class="h2">Driving innovation & <em>transformation</em></h2>
+      <p class="body">We harness the power of <strong>AI, cloud computing, and custom technology</strong> to solve business challenges. Our solutions streamline operations, unlock insights, and drive growth across any industry.</p>
+    </div>
+    <div class="stat-stack reveal">
+      <div class="stat" style="--w:92%"><span class="big">AI</span><span class="lbl">Machine learning & intelligent automation at the core</span><span class="bar"></span></div>
+      <div class="stat" style="--w:78%"><span class="big">Cloud</span><span class="lbl">Scalable AWS infrastructure built for performance</span><span class="bar"></span></div>
+      <div class="stat" style="--w:64%"><span class="big">Custom</span><span class="lbl">Tailored solutions for your unique workflows</span><span class="bar"></span></div>
+    </div>
+  </div>
+</section>
 
-    <section class="about-section shell" id="about" aria-labelledby="about-title"><div class="about-panel reveal" aria-hidden="true"><canvas class="fx-canvas" aria-hidden="true"></canvas><img class="about-logo" src="assets/brand/acornbyte-wordmark-on-dark.svg" alt="" width="392" height="75"><span class="about-coordinate">ROOTED IN PRACTICAL THINKING.</span></div><div class="about-copy reveal"><p class="eyebrow">04 / THE TEAM BEHIND THE BYTE</p><h2 id="about-title">Project experience.<br> Hands-on <em>technology.</em></h2><p>AcornByte builds software the way useful projects get done: understand the process, identify what matters and make the next step clear.</p><p>Our work spans project and workforce reporting, document and invoice tools, AI workspaces, mobile applications and local automation—from the first conversation through delivery and handover.</p><div class="about-values"><span><svg class="icon"><use href="#check"/></svg> Direct communication</span><span><svg class="icon"><use href="#check"/></svg> Clear scope</span><span><svg class="icon"><use href="#check"/></svg> Practical handover</span></div></div></section>
+<!-- WHY CHOOSE -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Why Choose AcornByte</div>
+      <h2>Built on expertise, <em>focused on results</em></h2>
+    </div>
+    <div class="grid why-grid">
+      <div class="why reveal"><div class="wn"><span>01</span><h4>Innovation First</h4></div><p>We stay ahead of the AI and ML curve, bringing cutting-edge technology to solve real business problems.</p></div>
+      <div class="why reveal"><div class="wn"><span>02</span><h4>Business Focus</h4></div><p>We understand business processes and build solutions that deliver measurable value, not just technology for its own sake.</p></div>
+      <div class="why reveal"><div class="wn"><span>03</span><h4>Rapid Deployment</h4></div><p>Cloud-native architecture and modern development practices mean faster time to value for your investment.</p></div>
+      <div class="why reveal"><div class="wn"><span>04</span><h4>Scalable Solutions</h4></div><p>Built to grow with your business, from startups to enterprise, across any industry and geography.</p></div>
+      <div class="why reveal"><div class="wn"><span>05</span><h4>Security & Compliance</h4></div><p>Enterprise-grade security, data protection, and audit trails built into every solution from day one.</p></div>
+      <div class="why reveal"><div class="wn"><span>06</span><h4>Proven Technology</h4></div><p>Built on AWS with industry-leading AI services including Textract, Bedrock, and S3 for reliability and performance.</p></div>
+    </div>
+  </div>
+</section>
 
-    <section class="section shell faq-section" aria-labelledby="faq-title"><div class="faq-heading"><p class="eyebrow">A FEW GOOD QUESTIONS</p><h2 id="faq-title">Before we<br> <em>begin.</em></h2></div><div class="faq-list"><details><summary>Do I need a complete specification?<svg class="icon" aria-hidden="true"><use href="#chevron"/></svg></summary><p>No. Start with what you want to accomplish and how you handle it today. We can work out the requirements and a sensible first scope together.</p></details><details><summary>Can you work with the tools we already use?<svg class="icon" aria-hidden="true"><use href="#chevron"/></svg></summary><p>Yes. We can review your spreadsheets, documents and software before deciding what to improve or connect. Integrations depend on the access, APIs and licensing the existing systems support.</p></details><details><summary>Does every project need AI?<svg class="icon" aria-hidden="true"><use href="#chevron"/></svg></summary><p>No. A clearer form, a better report or a simple automation may solve the problem. We’ll use AI where it has a useful role and agree on how its output should be reviewed.</p></details><details><summary>How does pricing work?<svg class="icon" aria-hidden="true"><use href="#chevron"/></svg></summary><p>We’ll agree on the scope and price before starting. Third-party software, hardware, hosting and AI-provider costs are identified separately. Ongoing maintenance or support is agreed as part of the project.</p></details><details><summary>Are the examples available as products I can buy?<svg class="icon" aria-hidden="true"><use href="#chevron"/></svg></summary><p>The examples illustrate development work. Tell me which workflow interests you, and we’ll discuss whether a demonstration, adaptation or new build is appropriate.</p></details><details><summary>Can we work remotely?<svg class="icon" aria-hidden="true"><use href="#chevron"/></svg></summary><p>Yes. Consultations are available by phone or Teams. AcornByte operates online; there is no walk-in location.</p></details><details><summary>What should I send with my inquiry?<svg class="icon" aria-hidden="true"><use href="#chevron"/></svg></summary><p>A short explanation of the problem, the tools involved and the result you want. Leave out passwords and confidential files; we can arrange an appropriate sample if it will help.</p></details></div></section>
+<!-- CUSTOM SOLUTIONS -->
+<section class="custom">
+  <div class="wrap">
+    <div class="custom-card reveal">
+      <div class="kicker">Beyond the Platform</div>
+      <h2>We also build <em>custom AI solutions</em></h2>
+      <p>Need something tailored to your unique workflows? We develop custom AI and ML applications for businesses with specialized requirements. From intelligent document processing to predictive analytics and workflow automation, we work with you to design and deploy solutions that fit your exact needs.</p>
+    </div>
+  </div>
+</section>
 
-    <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="shell contact-inner"><div><p class="eyebrow">LET’S MAKE THE NEXT STEP CLEAR</p><h2 id="contact-title">A better way<br> starts <em>here.</em></h2><p>A report rebuilt every week. Invoices waiting for approval.<br> Or an idea that needs a working first version.</p><div class="contact-details"><address class="contact-address"><span>ACORNBYTE, LLC</span><strong>1378 Sienna Peak Cir<br>Erie, CO 80516</strong><span>MAILING ADDRESS</span><strong>2525 Arapahoe Ave<br>Ste E4 #1380<br>Boulder, CO 80302</strong></address><p><a href="mailto:ewaisg@acornbyte.com">ewaisg@acornbyte.com</a><br>Use the form to start. Consultations by email, phone or Teams.</p></div></div><form class="contact-form" id="contact-form" aria-labelledby="contact-form-title"><p class="eyebrow" id="contact-form-title">CONTACT US</p><h3>Send a short note.</h3><p class="contact-form-intro">Share a little context and we’ll reply by email.</p><label for="contact-topic">What can we help with?</label><select id="contact-topic" name="topic"><option>Not sure yet — let’s talk</option><option>Business app or dashboard</option><option>Document, invoice or PDF workflow</option><option>AI assistant or software integration</option><option>Website or mobile app</option><option>Computer & home-office help</option><option>Wi-Fi & connected devices</option><option>Files, backups & AI guidance</option></select><div class="form-row"><div><label for="contact-name">Your name <span>(optional)</span></label><input id="contact-name" name="name" autocomplete="name" maxlength="100" placeholder="How should we address you?"></div><div><label for="contact-email">Your email <span>(required)</span></label><input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="So we can reply"></div></div><div class="form-row"><div><label for="contact-phone">Phone <span>(optional)</span></label><input id="contact-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="If you prefer a call"></div><div><label for="contact-mode">Preferred contact</label><select id="contact-mode" name="mode"><option>Email to start</option><option>Phone</option><option>Teams</option></select></div></div><label for="contact-message">What are you trying to do? <span>(required)</span></label><textarea id="contact-message" name="message" rows="4" minlength="10" maxlength="1500" required placeholder="A little context about the problem or idea…"></textarea><p class="form-hint">Please leave out passwords and sensitive information.</p><div class="form-trap" aria-hidden="true"><label for="contact-website">Leave this empty</label><input id="contact-website" name="website" tabindex="-1" autocomplete="off"></div><div class="form-actions"><button class="button button-dark" type="submit">Send message <svg class="icon"><use href="#arrow"/></svg></button></div><p id="contact-status" class="form-status" role="status" aria-live="polite"></p></form></div></section>
-  </main>
+<!-- CTA / CONTACT -->
+<section id="contact" class="cta">
+  <div class="wrap">
+    <div class="cta-card reveal">
+      <h2>Ready to transform <em>your business?</em></h2>
+      <p>Whether you're interested in Stampit early access or exploring custom AI solutions, we're here to help. Let's discuss how AcornByte can streamline your operations and unlock new opportunities.</p>
+      <div class="contact-row">
+        <a class="contact-pill" href="mailto:ewaisg@acornbyte.com"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>ewaisg@acornbyte.com</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <footer class="site-footer shell"><a class="brand" href="#home"><span class="brand-logos"><img class="signature-logo logo-on-dark" src="assets/brand/acornbyte-wordmark-on-dark.svg" alt="AcornByte" width="392" height="75"><img class="signature-logo logo-on-light" src="assets/brand/acornbyte-wordmark-on-light.svg" alt="AcornByte" width="392" height="75"></span></a><p>Practical tools. Clearer workflows.<span class="footer-address">AcornByte, LLC | 1378 Sienna Peak Cir, Erie, CO 80516 | Mailing: 2525 Arapahoe Ave, Ste E4 #1380, Boulder, CO 80302 | <a href="mailto:ewaisg@acornbyte.com">ewaisg@acornbyte.com</a></span></p><div><span>© <span id="year">2026</span> AcornByte, LLC</span><button class="privacy-link" id="privacy-open">Privacy</button><a href="#home" aria-label="Back to top">Back to top ↑</a></div></footer>
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-brand">
+      <img class="wm" src="assets/brand/acornbyte-wordmark-on-dark.svg" alt="AcornByte" width="392" height="75">
+      <div class="foot-tag">efficiency, engineered.</div>
+      <address class="foot-address">
+        <strong>AcornByte, LLC</strong>
+        Principal Office<br>
+        1378 Sienna Peak Cir<br>
+        Erie, CO 80516
+        <strong>Mailing Address</strong>
+        2525 Arapahoe Ave<br>
+        Ste E4 #1380<br>
+        Boulder, CO 80302
+      </address>
+    </div>
+    <div>
+      <div class="foot-links">
+        <a href="#solutions">Solutions</a>
+        <a href="#stampit">Stampit</a>
+        <a href="#mission">Mission</a>
+        <a href="#why">Why Us</a>
+        <a href="#contact">Contact</a>
+        <button id="privacy-open" style="background:none;border:none;cursor:pointer;color:var(--ink-faint);text-decoration:none;font-size:.92rem;padding:0;font-family:var(--body)">Privacy</button>
+      </div>
+      <div class="copy" style="margin-top:24px">&copy; <span id="yr"></span> AcornByte, LLC. All Rights Reserved.</div>
+    </div>
+  </div>
+</footer>
 
-  <dialog id="brief-dialog" aria-labelledby="brief-title"><div class="dialog-body"><button class="dialog-close" aria-label="Close inquiry form" data-close-dialog>×</button><p class="eyebrow">A SIMPLE START</p><h2 id="brief-title">What’s on<br> your <em>mind?</em></h2><p class="dialog-intro">Tell us a little about the project and we’ll reply by email.</p><form id="brief-form"><label for="inquiry-topic">What can we help with?</label><select id="inquiry-topic" name="topic"><option>Not sure yet — let’s talk</option><option>Business app or dashboard</option><option>Document, invoice or PDF workflow</option><option>AI assistant or software integration</option><option>Website or mobile app</option><option>Computer & home-office help</option><option>Wi-Fi & connected devices</option><option>Files, backups & AI guidance</option></select><div class="form-row"><div><label for="inquiry-name">Your name <span>(optional)</span></label><input id="inquiry-name" name="name" autocomplete="name" maxlength="100" placeholder="How should we address you?"></div><div><label for="inquiry-email">Your email <span>(required)</span></label><input id="inquiry-email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="So we can reply"></div></div><div class="form-row"><div><label for="inquiry-phone">Phone <span>(optional)</span></label><input id="inquiry-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="If you prefer a call"></div><div><label for="inquiry-mode">How would you like to talk?</label><select id="inquiry-mode" name="mode"><option>Email to start</option><option>Phone</option><option>Teams</option></select></div></div><label for="inquiry-message">What are you trying to do? <span>(required)</span></label><textarea id="inquiry-message" name="message" rows="4" minlength="10" maxlength="1500" required placeholder="A little context about the problem or idea…"></textarea><p class="form-hint">Please leave out passwords and sensitive information.</p><div class="form-trap" aria-hidden="true"><label for="inquiry-website">Leave this empty</label><input id="inquiry-website" name="website" tabindex="-1" autocomplete="off"></div><div class="form-actions"><button class="button button-dark" type="submit">Send inquiry <svg class="icon"><use href="#arrow"/></svg></button></div><p id="brief-status" class="form-status" role="status" aria-live="polite"></p></form></div></dialog>
-  <dialog id="privacy-dialog" aria-labelledby="privacy-title"><div class="dialog-body"><button class="dialog-close" aria-label="Close privacy information" data-close-dialog>×</button><p class="eyebrow">STRAIGHTFORWARD BY DESIGN</p><h2 id="privacy-title">Your <em>privacy.</em></h2><p>This website does not use advertising trackers, analytics scripts, or cookies. The interactive examples run in your browser tab and reset when the page is reloaded.</p><p>When you send the contact form, your message and the details you enter are emailed to AcornByte through our email delivery provider. The website itself does not store them.</p><p>The hosting provider may process technical request information, such as IP addresses, to serve and protect the website.</p><p>AcornByte uses information you send to respond to your inquiry and discuss your requested services. For privacy questions, use the contact form, email ewaisg@acornbyte.com, or write to AcornByte, LLC, 2525 Arapahoe Ave, Ste E4 #1380, Boulder, CO 80302.</p></div></dialog>
+<!-- PRIVACY DIALOG -->
+<dialog id="privacy-dialog" aria-labelledby="privacy-title">
+  <button class="dialog-close" aria-label="Close privacy information" id="privacy-close">×</button>
+  <div class="kicker">Privacy</div>
+  <h2 id="privacy-title">Your <em>privacy.</em></h2>
+  <p>This website does not use advertising trackers, analytics scripts, or cookies beyond what is necessary for the site to function.</p>
+  <p>When you contact us via email, your message and details are handled according to standard email protocols. AcornByte does not sell or share your information with third parties.</p>
+  <p>The hosting provider may process technical request information, such as IP addresses, to serve and protect the website.</p>
+  <p>For privacy questions, email <a href="mailto:ewaisg@acornbyte.com" style="color:var(--gold)">ewaisg@acornbyte.com</a> or write to AcornByte, LLC, 2525 Arapahoe Ave, Ste E4 #1380, Boulder, CO 80302.</p>
+</dialog>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // footer year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // nav border on scroll
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 10), {passive:true});
+
+  // mobile menu
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileMenu');
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // duplicate ticker content for seamless loop
+  const track = document.getElementById('tickerTrack');
+  track.innerHTML += track.innerHTML;
+
+  // scroll reveal
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold: .14});
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 4 * 70) + 'ms'; io.observe(el); });
+  const io2 = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io2.unobserve(e.target); } }), {threshold: .4});
+  document.querySelectorAll('.stat').forEach(el => io2.observe(el));
+
+  // card cursor spotlight
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  // privacy dialog
+  const privacyDialog = document.getElementById('privacy-dialog');
+  const privacyOpen = document.getElementById('privacy-open');
+  const privacyClose = document.getElementById('privacy-close');
+  privacyOpen.addEventListener('click', () => privacyDialog.showModal());
+  privacyClose.addEventListener('click', () => privacyDialog.close());
+  privacyDialog.addEventListener('click', e => { if (e.target === privacyDialog) privacyDialog.close(); });
+})();
+</script>
 </body>
 </html>
