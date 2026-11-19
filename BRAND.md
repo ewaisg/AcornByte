@@ -14,7 +14,7 @@ The mark is a true acorn whose stem is a single square pixel, the smallest unit 
 | `assets/favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` | Mark on the navy tile; the favicon uses a slightly larger mark so the pixel survives at 16 px. |
 | `assets/social-preview.png` | 1200 x 630 link preview. |
 
-Logo colors: gold `#E0A12F` and off-white `#E6E1D5` on dark; gold `#B8790F` and navy `#131C2D` on light. The complete export set (PNGs up to 4000 px, app icons, usage guide) is kept outside the repository as the One Bit logo package.
+Logo colors use the site's own tokens: on dark, headline gold `#D1902A` and text `#D8D4C8`; on light, button gold `#BC7C14` and navy `#131C2D`. In the horizontal logo the mark is scaled so the cap top aligns with the top of the b and t. The complete export set (PNGs up to 4000 px, app icons, usage guide) is kept outside the repository as the One Bit logo package.
 
 Minimum size: horizontal logo 120 px wide on screen (30 mm in print); mark alone 16 px. Clear space: at least the cap height. Keep the gaps equal and never let pixel, cap and nut touch. Do not stretch, add effects, recolor the wordmark, or change the typeface.
 
