@@ -641,3 +641,142 @@ button[type="submit"]:disabled { opacity: 0.7; cursor: progress; }
   backdrop-filter: blur(10px) saturate(1.15);
   border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
 }
+
+/* ------------------------------------------------------------------
+   Readable type scale
+   The original styles set most supporting text between 5 and 11 px.
+   This block sets one scale for the whole site, at every breakpoint:
+     body copy 16-17 px · secondary text, labels, buttons 14-15 px
+     small caps labels 12 px · text inside app illustrations >= 9-11 px
+     form inputs 16 px (prevents mobile zoom on focus)
+   "html body" raises specificity above the breakpoint rules.
+   ------------------------------------------------------------------ */
+
+/* Small-caps labels above headings */
+html body .eyebrow,
+html body .hero-copy > .eyebrow,
+html body .service-intro .pill,
+html body .contact-address > span { font-size: 12px; letter-spacing: 0.14em; }
+
+/* Body copy */
+html body .hero-description { font-size: 17px; line-height: 1.7; max-width: 520px; }
+html body .service-item p,
+html body .work-card-copy p,
+html body .process-step p,
+html body details p,
+html body .about-copy p,
+html body .contact-inner > div > p:not(.eyebrow),
+html body .demo-copy > p:not(.eyebrow):not(.demo-disclaimer) { font-size: 16px; line-height: 1.7; }
+
+/* Secondary text, links and notes */
+html body .hero-note p,
+html body .hero-note strong,
+html body .local-help,
+html body .local-help span,
+html body .service-footnote,
+html body .work-detail,
+html body .contact-details > p,
+html body .contact-form-intro,
+html body .inline-link { font-size: 14px; line-height: 1.6; }
+html body .work-disclaimer,
+html body .demo-disclaimer,
+html body .form-hint,
+html body .form-status { font-size: 13px; line-height: 1.6; }
+
+/* Navigation, buttons, tabs */
+html body .site-header nav a,
+html body .nav-cta,
+html body .button,
+html body .text-button,
+html body .text-button span { font-size: 14px; }
+html body .principles-strip span:not(.strip-acorn) { font-size: 14px; }
+html body .service-tab { font-size: 15px; }
+html body .service-tab > span,
+html body .service-number { font-size: 12px; }
+html body .demo-tab { font-size: 14px; }
+html body .demo-reset,
+html body .mini-button { font-size: 13px; }
+
+/* Forms */
+html body .contact-form label,
+html body #brief-form label { font-size: 14px; }
+html body .contact-form label > span,
+html body #brief-form label > span { font-size: 13px; }
+html body .contact-form input,
+html body .contact-form select,
+html body .contact-form textarea,
+html body #brief-form input,
+html body #brief-form select,
+html body #brief-form textarea { font-size: 16px; }
+
+/* About, footer, scene switcher */
+html body .about-values span { font-size: 13px; }
+html body .about-coordinate { font-size: 12px; letter-spacing: 0.14em; }
+html body .site-footer p,
+html body .site-footer div,
+html body .site-footer a,
+html body .site-footer .privacy-link { font-size: 14px; }
+html body .footer-address { font-size: 13px; }
+html body .fx-label { font-size: 11px; }
+html body .fx-switch button { font-size: 13px; }
+
+/* Interactive workbench (a working demo, so it should read like real UI) */
+html body .task-text { font-size: 14px; }
+html body .task-owner,
+html body .demo-bottom span,
+html body .demo-label,
+html body .window-chrome span { font-size: 12px; }
+
+/* App illustrations (hero card, work cards, document and AI mockups):
+   still miniatures, but never below a readable floor. */
+html body .workspace-art-top span,
+html body .workspace-caption,
+html body .workspace-connect span { font-size: 11px; }
+html body .workspace-heading p,
+html body .workspace-toolbar > span,
+html body .workspace-action strong,
+html body .ai-question,
+html body .document-note { font-size: 11px; }
+html body .workspace-heading span,
+html body .workspace-demo,
+html body .visual-top span,
+html body .mini-metrics span,
+html body .mini-table span,
+html body .work-tags span,
+html body .document-paper > span,
+html body .ai-review,
+html body .review-stamp small,
+html body .chart-labels span { font-size: 9px; }
+
+@media (max-width: 760px) {
+  html body .hero-description { font-size: 16px; }
+  html body .service-tab { font-size: 14px; }
+}
+
+/* Readable type scale: rules that outrank the general ones above */
+html body .hero-actions .button,
+html body .hero-actions .text-button,
+html body .form-actions .button,
+html body .work-card .inline-link,
+html body .work-card .work-detail { font-size: 14px; }
+html body .demo-copy .demo-disclaimer { font-size: 13px !important; }
+html body .demo-title-row p { font-size: 14px; }
+html body .tracker-summary span { font-size: 12px; }
+
+/* Hero app card: miniature UI with a readable floor */
+html body .workspace-art .workspace-stats span,
+html body .workspace-art .workspace-chart span,
+html body .workspace-art .chart-labels span { font-size: 9px; }
+html body .workspace-art .workspace-stats strong,
+html body .workspace-art .workspace-chart strong,
+html body .workspace-art .workspace-action strong { font-size: 11px; }
+html body .workspace-art .workspace-action span:not(.action-check) { font-size: 10px; }
+html body .workspace-art .workspace-connect b { font-size: 11px; }
+
+@media (max-width: 760px) {
+  html body .section-head p,
+  html body .service-intro p { font-size: 15px; line-height: 1.7; }
+  html body .faq-list summary { font-size: 16px; }
+}
+html body .chart-labels span { font-size: 9px !important; }
+html body .ai-answer div > span { font-size: 10px; }
