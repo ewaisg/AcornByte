@@ -213,3 +213,81 @@
   .workspace-connect { font-size: 5px; }
 }
 @media (prefers-reduced-motion: reduce) { .workspace-window { transform: none; } .chart-bars i { animation: none; } }
+
+/* Leadership / founder section */
+.team-section {
+  border-top: 1px solid var(--line);
+  padding-block: 80px 90px;
+}
+.founder-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  align-items: start;
+  max-width: 820px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  border-radius: 12px;
+  padding: 36px 40px;
+}
+.founder-avatar {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--forest);
+  color: var(--lime);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  flex: none;
+}
+.founder-copy h3 {
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1.15;
+}
+.founder-title {
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.founder-copy > p:not(.founder-title) {
+  margin-top: 16px;
+  max-width: 560px;
+  line-height: 1.8;
+}
+.founder-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin-top: 24px;
+}
+.founder-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+.founder-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.founder-links .icon {
+  width: 16px;
+  height: 16px;
+}
+@media (max-width: 650px) {
+  .team-section { padding-block: 57px 65px; }
+  .founder-card {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 28px 26px;
+  }
+  .founder-avatar { width: 64px; height: 64px; font-size: 20px; }
+  .founder-copy h3 { font-size: 28px; }
+}
